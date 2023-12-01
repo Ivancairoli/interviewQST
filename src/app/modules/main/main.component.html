@@ -1,0 +1,24 @@
+<div class="container">
+    <mat-card *ngFor="let movie of movies" class="movies-card">
+        <mat-card-header class="top-container">
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title class="title-movie">{{movie.title}}</mat-card-title>
+          <mat-card-subtitle class="genre-movie">{{movie.genre}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="movie.picture" class="image-movie">
+        <div class="inner-container">
+          <p class="duration-movie"><b>({{movie.duration}})</b></p>
+          <p class="release-movie"><b>{{movie.releaseDate}}</b></p>
+        </div>
+        <mat-card-content>
+          <p class="description-movie">
+            {{movie.description}}
+          </p>
+        </mat-card-content>
+
+        <mat-card-actions class="btns">
+          <button mat-button  matTooltip="Add to watchlist" matTooltipPosition="above" aria-label="Button tooltip"><mat-icon >visibility</mat-icon></button>
+          <button mat-raised-button color="primary">More details</button>
+        </mat-card-actions>
+      </mat-card>
+</div>
