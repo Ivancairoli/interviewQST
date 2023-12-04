@@ -1,0 +1,17 @@
+<div class="container-image">
+    <img [src]="movieSelected.picture" alt="">
+</div>
+<div class="container">
+    <div class="header-container">
+    </div>
+    <div class="body-container">
+        <h3><b>{{movieSelected.genre}}</b></h3>
+        <p>{{movieSelected.description}}</p>
+        <p>Release date: {{movieSelected.releaseDate}}</p>
+        <p>Rating: {{movieSelected.rating}}</p>
+    </div>
+</div>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close color="info">Close</button>
+</mat-dialog-actions>

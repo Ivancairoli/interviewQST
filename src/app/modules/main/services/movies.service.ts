@@ -58,10 +58,11 @@ export class MoviesService {
       releaseDate: "1 May 2015",
       trailer: "https://www.youtube.com/watch?v=tmeOjFno6Do",
       picture: '../../../../assets/Avengers.png'
-    }
+    },
+    
   ]
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   getMovies(): Movie[]{
     return this.movies;

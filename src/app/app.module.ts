@@ -11,6 +11,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatDialogModule} from '@angular/material/dialog';
+import { ModalComponent } from './modules/main/components/modal/modal.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -18,6 +23,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     HeaderComponent,
     FooterComponent,
     MainComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +33,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatIconModule,
     MatCardModule,
     HttpClientModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatBadgeModule,
+    MatDialogModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

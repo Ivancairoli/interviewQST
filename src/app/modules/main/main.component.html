@@ -1,24 +1,33 @@
-<div class="container">
-    <mat-card *ngFor="let movie of movies" class="movies-card">
-        <mat-card-header class="top-container">
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title class="title-movie">{{movie.title}}</mat-card-title>
-          <mat-card-subtitle class="genre-movie">{{movie.genre}}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image [src]="movie.picture" class="image-movie">
-        <div class="inner-container">
-          <p class="duration-movie"><b>({{movie.duration}})</b></p>
-          <p class="release-movie"><b>{{movie.releaseDate}}</b></p>
-        </div>
-        <mat-card-content>
-          <p class="description-movie">
-            {{movie.description}}
-          </p>
-        </mat-card-content>
+<div class="search-bar">
+    <mat-icon style="color: white;">search</mat-icon>
+    <input type="text" placeholder="Search" name="filter" (input)="filterMovies($event)">
+</div>
 
-        <mat-card-actions class="btns">
-          <button mat-button  matTooltip="Add to watchlist" matTooltipPosition="above" aria-label="Button tooltip"><mat-icon >visibility</mat-icon></button>
-          <button mat-raised-button color="primary">More details</button>
-        </mat-card-actions>
-      </mat-card>
+
+<div class="grid">
+  <div class="container">
+      <mat-card *ngFor="let movie of filteredMovies" class="movies-card">
+          <mat-card-header class="top-container">
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title class="title-movie">{{movie.title}}</mat-card-title>
+            <mat-card-subtitle class="genre-movie">{{movie.genre}}</mat-card-subtitle>
+          </mat-card-header>
+          
+          <p style="text-align: center;"><b>Release: {{movie.releaseDate}}</b></p>
+          <img mat-card-image [src]="movie.picture" class="image-movie">
+          <mat-card-content>
+            <mat-card-actions class="btns">
+              <button mat-mini-fab color="#fc7d23" (click)="addToWatch(movie)" matTooltip="Add to watchlist" matTooltipPosition="above" aria-label="Button tooltip" style="margin: 0; text-align: center;">
+                <mat-icon>add_circle</mat-icon>
+              </button>
+              <button mat-raised-button color="primary" (click)="viewDetails(movie)">More details</button>
+            </mat-card-actions>
+          </mat-card-content>
+        </mat-card>
+
+        <div *ngIf="filteredMovies.length === 0">
+          <p style="color: white; text-align: center;" >No data found</p>
+          <img src="https://yoast.com/app/uploads/2015/08/404_error_checking_FI.png" style="width: 400px; border-radius: 40px;">
+        </div>
+  </div>
 </div>
