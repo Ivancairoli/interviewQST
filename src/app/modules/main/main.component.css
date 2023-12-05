@@ -87,7 +87,7 @@ mat-icon {
 
 @media(max-width:800px){
     .container{
-        height: 75vh
+        height: 80vh
     }
 
     .movies-card{

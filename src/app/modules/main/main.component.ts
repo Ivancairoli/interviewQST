@@ -3,6 +3,7 @@ import { Movie } from './models/movie.model';
 import { MoviesService } from './services/movies.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from './components/modal/modal.component';
+import { ListModalComponent } from './components/list-modal/list-modal.component';
 
 @Component({
   selector: 'app-main',
@@ -14,7 +15,8 @@ export class MainComponent implements OnInit {
   searchTerm: string = '';
   filteredMovies: Movie[] = [];
   movies: Movie[] = [];
-  @Output('movie')movieEmitter: EventEmitter<Movie> = new EventEmitter<Movie>();
+  badge: number = 0;
+  myList: Movie[] = [];
 
   constructor(private moviesService: MoviesService, public dialog: MatDialog) {}
 
@@ -24,9 +26,15 @@ export class MainComponent implements OnInit {
   }
 
   addToWatch(movie: Movie): void {
-    this.movieEmitter.emit(movie)
+    const index = this.myList.findIndex(m => m.title === movie.title);
+    if (index >= 0) {
+      this.myList.splice(index, 1);
+      this.badge = Math.max(0, this.badge - 1);
+    } else {
+      this.myList.push(movie);
+      this.badge++;
+    }
   }
-
   viewDetails(movie: Movie): void{
     const dialogRef = this.dialog.open(ModalComponent, {
       width: '600px',
@@ -43,5 +51,17 @@ export class MainComponent implements OnInit {
       movie.title.toLowerCase().includes(inputValue.toLowerCase()) ||
       movie.releaseDate.toLowerCase().includes(inputValue.toLowerCase())
     ) : this.movies;
+  }
+
+  openList($event: any){
+    const dialogRef = this.dialog.open(ListModalComponent, {
+      width: '400px',
+      height: '400px',
+      data: this.myList
+    })
+  }
+
+  isInWatchList(movie: Movie): boolean {
+    return this.myList.some(m => m.title === movie.title);
   }
 }

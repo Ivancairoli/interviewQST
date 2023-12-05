@@ -1,0 +1,25 @@
+<div class="container">
+
+<div class="full-size">
+    <div *ngFor="let movie of myList" class="container-list">
+        <div class="image">
+            <img class="picture" [src]="movie.picture" alt="">
+        </div>
+        <div class="content">
+            <h1 class="title" style="font-size: 16px">{{movie.title}}</h1>
+            <p class="genre" style="font-size: 14px"><b>{{movie.genre}}</b></p>
+        </div>
+        <div class="btn">
+            <button mat-button style="border-radius: 5px; text-align: center; margin: 0;" (click)="outOfTheList(movie)"><mat-icon>close</mat-icon></button>
+        </div>
+    </div>
+
+    <div *ngIf="myList.length === 0" class="no-data">
+        <h1>No items in the list</h1>
+    </div>
+</div>
+
+<mat-dialog-actions class="actions" align="end">
+    <button mat-raised-button mat-dialog-close color="info">Close</button>
+</mat-dialog-actions>
+</div>

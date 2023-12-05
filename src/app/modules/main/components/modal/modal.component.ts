@@ -15,4 +15,7 @@ export class ModalComponent {
     this.movieSelected = data;
   }
 
+  goToTrailer(movie: Movie) {
+    window.open(movie.trailer, '_blank');
+  }
 }

@@ -8,14 +8,9 @@ import { Movie } from '../../main/models/movie.model';
 })
 export class HeaderComponent implements OnInit {
 
-  @Input('movies')moviesInTheList: Movie[] = [];
-  badge: number = 0;
-
   constructor() { }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
 
 }

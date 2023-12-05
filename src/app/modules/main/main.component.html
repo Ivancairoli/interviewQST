@@ -1,6 +1,11 @@
 <div class="search-bar">
     <mat-icon style="color: white;">search</mat-icon>
-    <input type="text" placeholder="Search" name="filter" (input)="filterMovies($event)">
+    <input type="text" placeholder="Search" name="filter" (input)="filterMovies($event)" style="margin-right: 20px;">
+    <div class="demo-section">
+      <button mat-raised-button color="primary" [matBadge]="badge" matBadgePosition="before" matBadgeColor="accent" (click)="openList(myList)">
+        <mat-icon>receipt_long</mat-icon>My list
+      </button>
+    </div>
 </div>
 
 
@@ -17,8 +22,14 @@
           <img mat-card-image [src]="movie.picture" class="image-movie">
           <mat-card-content>
             <mat-card-actions class="btns">
-              <button mat-mini-fab color="#fc7d23" (click)="addToWatch(movie)" matTooltip="Add to watchlist" matTooltipPosition="above" aria-label="Button tooltip" style="margin: 0; text-align: center;">
+              <mat-chip style="margin-right: 10px;" *ngIf="isInWatchList(movie)">
+                In my list
+              </mat-chip>
+              <button mat-mini-fab color="#fc7d23" *ngIf="!isInWatchList(movie)" (click)="addToWatch(movie)" matTooltip="Add to watchlist" matTooltipPosition="above" aria-label="Button tooltip" style="margin: 0; text-align: center;">
                 <mat-icon>add_circle</mat-icon>
+              </button>
+              <button mat-mini-fab color="#fc7d23" *ngIf="isInWatchList(movie)" (click)="addToWatch(movie)" matTooltip="In watchlist" matTooltipPosition="above" aria-label="Button tooltip" style="margin: 0; text-align: center;">
+                <mat-icon>check</mat-icon>
               </button>
               <button mat-raised-button color="primary" (click)="viewDetails(movie)">More details</button>
             </mat-card-actions>

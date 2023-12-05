@@ -15,7 +15,8 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatDialogModule} from '@angular/material/dialog';
 import { ModalComponent } from './modules/main/components/modal/modal.component';
 import { FormsModule } from '@angular/forms';
-
+import { ListModalComponent } from './modules/main/components/list-modal/list-modal.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     MainComponent,
     ModalComponent,
+    ListModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { FormsModule } from '@angular/forms';
     MatTooltipModule,
     MatBadgeModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
